@@ -2,7 +2,7 @@ class Api::V1::FoldersController < ApplicationController
   before_action :find_folder, only: [:show, :update, :destroy]
 
   def index
-    @folders = Api::V1::Folder.all
+    @folders = Folder.all
 
     render json: @folders
   end
@@ -15,7 +15,7 @@ class Api::V1::FoldersController < ApplicationController
   end
 
   def create
-    @folder = Api::V1::Folder.new(folder_params)
+    @folder = Folder.new(folder_params)
 
     if @folder.save
       render json: @folder
@@ -42,7 +42,7 @@ class Api::V1::FoldersController < ApplicationController
   private
 
   def find_folder
-    @folder = Api::V1::Folder.find(params[:id])
+    @folder = Folder.find(params[:id])
   end
 
   def folder_params

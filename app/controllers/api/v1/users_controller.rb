@@ -24,10 +24,10 @@ class Api::V1::UsersController < ApplicationController
       folders: @user.folders
     }
   end
-
-  def user_folders
-
-  end
+  #
+  # def user_folders
+  #
+  # end
 
   private
 
