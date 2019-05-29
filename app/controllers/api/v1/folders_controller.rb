@@ -10,23 +10,25 @@ class Api::V1::FoldersController < ApplicationController
 
   def show
     render json: @folder
+    @files = @folder.files
+    render json: @files
   end
 
   def create
-    @folder = Api::V1:Folder.new(folder_params)
+    @folder = Api::V1::Folder.new(folder_params)
 
     if @folder.save
       render json: @folder
-    else
-      render json: @folder.errors, status: :unprocessable_entity
+    # else
+    #   render json: @folder.errors, status: :unprocessable_entity
     end
   end
 
   def update
     if @folder.update(folder_params)
       render json: @folder
-    else
-      @folder.errors, status: :unprocessable_entity
+    # else
+    #   @folder.errors, status: :unprocessable_entity
     end
   end
 
