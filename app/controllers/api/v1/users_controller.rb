@@ -1,7 +1,8 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :get_user, only: [:show, :update, :destroy]
 
   def create
-    @user = Api::V1::User.new(user_params)
+    @user = User.new(user_params)
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -17,6 +18,7 @@ class Api::V1::UsersController < ApplicationController
 
 # methods to show user's homepage
   def show
+    # @user = Api::V1::User.find(params[:id])
     render json: {
       name: @user.name,
       folders: @user.folders
@@ -28,6 +30,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   private
+
+  def get_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :avatar)
