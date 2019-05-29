@@ -1,5 +1,5 @@
 class Folder < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :docs, dependent: :destroy
 
   has_many :subfolders, :class_name => "Folder", :foreign_key => "parent_folder"
