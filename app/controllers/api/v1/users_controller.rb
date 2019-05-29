@@ -39,7 +39,11 @@ class Api::V1::UsersController < ApplicationController
       folders: @user.folders
     }
   end
+<<<<<<< HEAD
 
+=======
+  #
+>>>>>>> 8e05c74b370daa5162a089e51cc717664dfd73c2
   # def user_folders
   #
   # end
