@@ -9,31 +9,15 @@ class Api::V1::FoldersController < ApplicationController
 
 
   def show
-    render json: {
-      id: @folder.id,
-      name: @folder.name,
-      picture: @folder.picture,
-      star: @folder.star,
-      description: @folder.description
-      }
-    #
+    render json:  @folder
     # @files = @folder.files
     # render json: @files
   end
 
   def create
     @folder = Folder.new(folder_params)
-    p "-------------"
-    p @folder
-    p "-------------"
     if @folder.save
-      render json: {
-        id: @folder.id,
-        name: @folder.name,
-        picture: @folder.picture,
-        star: @folder.star,
-        description: @folder.description
-        }
+      render json: @folder
     # else
     #   render json: @folder.errors, status: :unprocessable_entity
     end

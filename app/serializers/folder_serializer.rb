@@ -1,3 +1,5 @@
 class FolderSerializer < ActiveModel::Serializer
-  attributes :id, :name, :picture, :description, :star
+  belongs_to :user
+  has_many :docs
+  attributes :id, :name, :picture, :star, :description
 end

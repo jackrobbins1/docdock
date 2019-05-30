@@ -3,15 +3,16 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     @users = User.all
-    login_info_users = @users.map { |user|
-        {
-          id: user.id,
-          name: user.name,
-          email: user.email
-        }
-      }
+    render json: @users
+    # login_info_users = @users.map { |user|
+    #     {
+    #       id: user.id,
+    #       name: user.name,
+    #       email: user.email
+    #     }
+    #   }
 
-    render json: login_info_users
+    # render json: login_info_users
   end
 
   def create
@@ -31,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
 
 # methods to show user's homepage
   def show
-    # @user = Api::V1::User.find(params[:id])
+    # render json: @user
     render json: {
       id: @user.id,
       name: @user.name,
@@ -39,14 +40,7 @@ class Api::V1::UsersController < ApplicationController
       folders: @user.folders
     }
   end
-<<<<<<< HEAD
 
-=======
-  #
->>>>>>> 8e05c74b370daa5162a089e51cc717664dfd73c2
-  # def user_folders
-  #
-  # end
 
   private
 
