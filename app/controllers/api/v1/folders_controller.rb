@@ -9,9 +9,10 @@ class Api::V1::FoldersController < ApplicationController
 
 
   def show
-    render json: @folder
-    @files = @folder.files
-    render json: @files
+    render json: {
+        folder: @folder,
+        docs: @folder.docs
+      }
   end
 
   def create

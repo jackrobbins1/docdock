@@ -17,8 +17,8 @@ class Api::V1::DocsController < ApplicationController
 
     if @doc.save
       render json: @doc
-    # else
-    #   render json: @doc.errors, status: :unprocessable_entity
+    else
+      render json: @doc.errors, status: :unprocessable_entity
     end
   end
 
@@ -35,8 +35,6 @@ class Api::V1::DocsController < ApplicationController
     render json: @docs
   end
 
-
-
   private
 
   def find_doc
@@ -44,7 +42,7 @@ class Api::V1::DocsController < ApplicationController
   end
 
   def doc_params
-    params.require(:doc).permit(:name, :picture, :star, :description, :user_id, :parent_doc_id)
+    params.require(:doc).permit(:name, :site_url, :picture_url, :notes, :gists, :star, :folder_id)
   end
 
 end
